@@ -1,0 +1,24 @@
+Push Satu Tag
+git push origin nama_tag
+
+Push Semua Tag Sekaligus
+git push origin --tags
+
+melihat tag yang sudah di-push ke GitHub
+git ls-remote --tags origin
+
+melihat tag yang sudah di-push ke GitHub tanpa hash
+git ls-remote --tags origin | cut -d/ -f3
+
+Hapus Tag dari Remote (GitHub)
+git push origin --delete tag nama_tag
+
+Hapus Semua Tag Remote
+git tag -l | xargs -n 1 git push origin --delete tag
+
+Penjelasan:
+- git tag -l: mengambil semua tag lokal.
+- xargs -n 1: menjalankan git push origin --delete tag <nama_tag> untuk setiap tag.
+
+Pastikan semua tag lokal sudah sinkron dengan remote, atau ambil dulu:
+git fetch --tags
